@@ -83,11 +83,10 @@ to use the + operator for string concatenation.
 */
 
 export function sumArrayWithThreeNumbers(sumArr) {
-    const sumArray = [2, 3, 4];
-    const sum3 = sum(sumArray[0], sumArray[1])[0];
+    const sum3 = sum(sumArr[0], sumArr[1])[0];
     const sum4 = sum(sum3, sumArr[2])[0];
     console.log(sum3, sum4);
-    return [sum4, `2,3,4 was passed in as an array of numbers, and ${sum4} is their sum.`];
+    return [sum4, `${sumArr} was passed in as an array of numbers, and ${sum4} is their sum.`];
 
 }
 
@@ -111,11 +110,10 @@ you may continue to use the + operator for string concatenation.
 */
 
 export function multiplyArrayWithThreeNumbers(multArr) {
-    const mulArray = [2, 3, 4];
-    const mul3 = multiply(mulArray[0], mulArray[1])[0];
-    const mul4 = multiply(mul3, mulArray[2])[0];
+    const mul3 = multiply(multArr[0], multArr[1])[0];
+    const mul4 = multiply(mul3, multArr[2])[0];
     console.log(mul3, mul4);
-    return [mul4, `The numbers 2,3,4 have a product of 24.`];
+    return [mul4, `The numbers ${multArr} have a product of ${mul4}.`];
 
 }
 
@@ -136,7 +134,17 @@ IMPORTANT DETAIL: You may not use the arithmetic operator * in this function. To
 This function should be dynamic, accepting an array of any length.
 */
 
-export function multiplyAnyArray(dynamicArray) { //eslint-disable-line
+export function multiplyAnyArray(dynamicArray){
+    let strArray = [];
+    let mulArray = 1; 
+    for(let num of dynamicArray) {
+        mulArray = multiply(num, mulArray)[0];
+        strArray.push(num);
+    }
+
+    const str = `The numbers ${strArray} have a product of ${mulArray}.`;
+    
+    return [mulArray, str];
 
 }
 
